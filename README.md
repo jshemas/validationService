@@ -11,6 +11,20 @@ npm install
 node app
 ```
 
+### Return JSON
+The return JSON should always have a status code of 200. Check the return for a ```success``` flag. 
+If success is set to true, then the user's input was valid. Otherwise it will be set to false.
+
+Valid GET username call
+```
+http://localhost:8080/validate/username?username=myusername
+```
+
+Valid GET password call
+```
+http://localhost:8080/validate/password?password=mypassword
+```
+
 ### Tests
 You have to have jasmine-node running. To install it run...
 ```
