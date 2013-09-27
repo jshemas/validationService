@@ -1,9 +1,7 @@
 var request = require('supertest'),
+	app = require('../app'),
 	expect = require('expect.js');
 console.log("Starting Tests");
-
-//enter your domain
-var baseURL = "http://localhost:8080/";
 
 //sometimes error don't show in the log...
 //http://stackoverflow.com/questions/8794008/no-stack-trace-for-jasmine-node-errors
@@ -42,8 +40,8 @@ var password4 = 'passwordpasswordpasswordpasswordpasswordpasswordpassword',
 
 describe('POST - validate/var:', function (done) {
 	it('good var', function(done) {
-		request(baseURL)
-			.post('validate/var?variable='+test)
+		request(app)
+			.post('/validate/var?variable='+test)
 			.end( function(err, result) {
 				expect(result.res.statusCode).to.be(200);
 				expect(result.res.body.success).to.be(true);
@@ -51,8 +49,8 @@ describe('POST - validate/var:', function (done) {
 			});
 	});
 	it('bad var - used empty', function(done) {
-		request(baseURL)
-			.post('validate/var?variable='+empty)
+		request(app)
+			.post('/validate/var?variable='+empty)
 			.end( function(err, result) {
 				expect(result.res.statusCode).to.be(200);
 				expect(result.res.body.success).to.be(false);
@@ -60,8 +58,8 @@ describe('POST - validate/var:', function (done) {
 			});
 	});
 	it('bad var - didnt pass var', function(done) {
-		request(baseURL)
-			.post('validate/var')
+		request(app)
+			.post('/validate/var')
 			.end( function(err, result) {
 				expect(result.res.statusCode).to.be(200);
 				expect(result.res.body.success).to.be(false);
@@ -72,8 +70,8 @@ describe('POST - validate/var:', function (done) {
 
 describe('POST - validate/username:', function (done) {
 	it('good username - username1', function(done) {
-		request(baseURL)
-			.post('validate/username?username='+username1)
+		request(app)
+			.post('/validate/username?username='+username1)
 			.end( function(err, result) {
 				expect(result.res.statusCode).to.be(200);
 				expect(result.res.body.success).to.be(true);
@@ -81,8 +79,8 @@ describe('POST - validate/username:', function (done) {
 			});
 	});
 	it('good username - username2', function(done) {
-		request(baseURL)
-			.post('validate/username?username='+username2)
+		request(app)
+			.post('/validate/username?username='+username2)
 			.end( function(err, result) {
 				expect(result.res.statusCode).to.be(200);
 				expect(result.res.body.success).to.be(true);
@@ -90,8 +88,8 @@ describe('POST - validate/username:', function (done) {
 			});
 	});
 	it('good username - username3', function(done) {
-		request(baseURL)
-			.post('validate/username?username='+username3)
+		request(app)
+			.post('/validate/username?username='+username3)
 			.end( function(err, result) {
 				expect(result.res.statusCode).to.be(200);
 				expect(result.res.body.success).to.be(true);
@@ -99,8 +97,8 @@ describe('POST - validate/username:', function (done) {
 			});
 	});
 	it('good username - username4', function(done) {
-		request(baseURL)
-			.post('validate/username?username='+username4)
+		request(app)
+			.post('/validate/username?username='+username4)
 			.end( function(err, result) {
 				expect(result.res.statusCode).to.be(200);
 				expect(result.res.body.success).to.be(true);
@@ -108,8 +106,8 @@ describe('POST - validate/username:', function (done) {
 			});
 	});
 	it('good username - username5', function(done) {
-		request(baseURL)
-			.post('validate/username?username='+username5)
+		request(app)
+			.post('/validate/username?username='+username5)
 			.end( function(err, result) {
 				expect(result.res.statusCode).to.be(200);
 				expect(result.res.body.success).to.be(true);
@@ -117,8 +115,8 @@ describe('POST - validate/username:', function (done) {
 			});
 	});
 	it('bad username - username6', function(done) {
-		request(baseURL)
-			.post('validate/username?username='+username6)
+		request(app)
+			.post('/validate/username?username='+username6)
 			.end( function(err, result) {
 				expect(result.res.statusCode).to.be(200);
 				expect(result.res.body.success).to.be(false);
@@ -126,8 +124,8 @@ describe('POST - validate/username:', function (done) {
 			});
 	});
 	it('bad username - username7', function(done) {
-		request(baseURL)
-			.post('validate/username?username='+username7)
+		request(app)
+			.post('/validate/username?username='+username7)
 			.end( function(err, result) {
 				expect(result.res.statusCode).to.be(200);
 				expect(result.res.body.success).to.be(false);
@@ -135,8 +133,8 @@ describe('POST - validate/username:', function (done) {
 			});
 	});
 	it('bad username - username8', function(done) {
-		request(baseURL)
-			.post('validate/username?username='+username8)
+		request(app)
+			.post('/validate/username?username='+username8)
 			.end( function(err, result) {
 				expect(result.res.statusCode).to.be(200);
 				expect(result.res.body.success).to.be(false);
@@ -144,8 +142,8 @@ describe('POST - validate/username:', function (done) {
 			});
 	});
 	it('bad username - username9', function(done) {
-		request(baseURL)
-			.post('validate/username?username='+username9)
+		request(app)
+			.post('/validate/username?username='+username9)
 			.end( function(err, result) {
 				expect(result.res.statusCode).to.be(200);
 				expect(result.res.body.success).to.be(false);
@@ -153,8 +151,8 @@ describe('POST - validate/username:', function (done) {
 			});
 	});
 	it('bad username - empty', function(done) {
-		request(baseURL)
-			.post('validate/username?username='+empty)
+		request(app)
+			.post('/validate/username?username='+empty)
 			.end( function(err, result) {
 				expect(result.res.statusCode).to.be(200);
 				expect(result.res.body.success).to.be(false);
@@ -165,8 +163,8 @@ describe('POST - validate/username:', function (done) {
 
 describe('POST - validate/password:', function (done) {
 	it('good password - password1', function(done) {
-		request(baseURL)
-			.post('validate/password?password='+password1)
+		request(app)
+			.post('/validate/password?password='+password1)
 			.end( function(err, result) {
 				expect(result.res.statusCode).to.be(200);
 				expect(result.res.body.success).to.be(true);
@@ -174,8 +172,8 @@ describe('POST - validate/password:', function (done) {
 			});
 	});
 	it('good password - password2', function(done) {
-		request(baseURL)
-			.post('validate/password?password='+password2)
+		request(app)
+			.post('/validate/password?password='+password2)
 			.end( function(err, result) {
 				expect(result.res.statusCode).to.be(200);
 				expect(result.res.body.success).to.be(true);
@@ -183,8 +181,8 @@ describe('POST - validate/password:', function (done) {
 			});
 	});
 	it('good password - password3', function(done) {
-		request(baseURL)
-			.post('validate/password?password='+password3)
+		request(app)
+			.post('/validate/password?password='+password3)
 			.end( function(err, result) {
 				expect(result.res.statusCode).to.be(200);
 				expect(result.res.body.success).to.be(true);
@@ -192,8 +190,8 @@ describe('POST - validate/password:', function (done) {
 			});
 	});
 	it('bad password - password4', function(done) {
-		request(baseURL)
-			.post('validate/password?password='+password4)
+		request(app)
+			.post('/validate/password?password='+password4)
 			.end( function(err, result) {
 				expect(result.res.statusCode).to.be(200);
 				expect(result.res.body.success).to.be(false);
@@ -201,8 +199,8 @@ describe('POST - validate/password:', function (done) {
 			});
 	});
 	it('bad password - password5', function(done) {
-		request(baseURL)
-			.post('validate/password?password='+password5)
+		request(app)
+			.post('/validate/password?password='+password5)
 			.end( function(err, result) {
 				expect(result.res.statusCode).to.be(200);
 				expect(result.res.body.success).to.be(false);
@@ -210,8 +208,8 @@ describe('POST - validate/password:', function (done) {
 			});
 	});
 	it('bad password - used empty', function(done) {
-		request(baseURL)
-			.post('validate/password?password='+empty)
+		request(app)
+			.post('/validate/password?password='+empty)
 			.end( function(err, result) {
 				expect(result.res.statusCode).to.be(200);
 				expect(result.res.body.success).to.be(false);
