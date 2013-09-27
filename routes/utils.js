@@ -62,3 +62,15 @@ exports.validateLastName = function(lastName, callback) {
 	var regex = /[a-zA-Z]{2,30}/;
 	return regex.test(lastName);
 };
+
+/**
+ * validate US zip code
+ * @param string zip code - user input: zip code
+ * @param function callback
+ */
+exports.validateZipCode = function(zipCode, callback) {
+	//number characters between 0-8
+	//5 characters long
+	var regex = /(^\d{5}$)|(^\d{5}-\d{4}$)/;
+	return regex.test(zipCode);
+};

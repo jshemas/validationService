@@ -38,6 +38,15 @@ var password1 = 'password',
 var password4 = 'passwordpasswordpasswordpasswordpasswordpasswordpassword',
 	password5 = '<password>';
 
+// vaild zip codes
+var zipcode1 = '12345',
+	zipcode2 = '34643',
+	zipcode3 = '11111';
+
+// invaild zip codes
+var zipcode4 = 'jhjkh',
+	zipcode5 = '111i11';
+
 describe('POST - validate/var:', function (done) {
 	it('good var', function(done) {
 		request(app)
@@ -210,6 +219,63 @@ describe('POST - validate/password:', function (done) {
 	it('bad password - used empty', function(done) {
 		request(app)
 			.post('/validate/password?password='+empty)
+			.end( function(err, result) {
+				expect(result.res.statusCode).to.be(200);
+				expect(result.res.body.success).to.be(false);
+				done();
+			});
+	});
+});
+
+describe('POST - validate/zipcode:', function (done) {
+	it('good zipcode - zipcode1', function(done) {
+		request(app)
+			.post('/validate/zipcode?zipcode='+zipcode1)
+			.end( function(err, result) {
+				expect(result.res.statusCode).to.be(200);
+				expect(result.res.body.success).to.be(true);
+				done();
+			});
+	});
+	it('good zipcode - zipcode3', function(done) {
+		request(app)
+			.post('/validate/zipcode?zipcode='+zipcode2)
+			.end( function(err, result) {
+				expect(result.res.statusCode).to.be(200);
+				expect(result.res.body.success).to.be(true);
+				done();
+			});
+	});
+	it('good zipcode - zipcode3', function(done) {
+		request(app)
+			.post('/validate/zipcode?zipcode='+zipcode3)
+			.end( function(err, result) {
+				expect(result.res.statusCode).to.be(200);
+				expect(result.res.body.success).to.be(true);
+				done();
+			});
+	});
+	it('bad zipcode - zipcode4', function(done) {
+		request(app)
+			.post('/validate/zipcode?zipcode='+zipcode4)
+			.end( function(err, result) {
+				expect(result.res.statusCode).to.be(200);
+				expect(result.res.body.success).to.be(false);
+				done();
+			});
+	});
+	it('bad zipcode - zipcode5', function(done) {
+		request(app)
+			.post('/validate/zipcode?zipcode='+zipcode5)
+			.end( function(err, result) {
+				expect(result.res.statusCode).to.be(200);
+				expect(result.res.body.success).to.be(false);
+				done();
+			});
+	});
+	it('bad zipcode - used empty', function(done) {
+		request(app)
+			.post('/validate/zipcode?zipcode='+empty)
 			.end( function(err, result) {
 				expect(result.res.statusCode).to.be(200);
 				expect(result.res.body.success).to.be(false);

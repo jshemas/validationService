@@ -5,7 +5,8 @@ module.exports = function(app) {
 		validateUsername = require('./utils.js').validateUsername,
 		validatePassword = require('./utils.js').validatePassword,
 		validateFirstName = require('./utils.js').validateFirstName,
-		validateLastName = require('./utils.js').validateLastName;
+		validateLastName = require('./utils.js').validateLastName,
+		validateZipCode = require('./utils.js').validateZipCode;
 
 	/*
 	 * POST Validate - Var
@@ -85,6 +86,24 @@ module.exports = function(app) {
 	app.post('/validate/lastname', function(req, res){
 		var lastname = req.param('lastname');
 		if(validateUsername(lastname)){
+			res.json({
+				success: true,
+			});
+		} else {
+			res.json({
+				success: false,
+				error: 'not valid'
+			});
+		};
+		return;
+	});
+
+	/*
+	 * POST Validate - US Zip Code
+	 */
+	app.post('/validate/zipcode', function(req, res){
+		var zipcode = req.param('zipcode');
+		if(validateZipCode(zipcode)){
 			res.json({
 				success: true,
 			});
