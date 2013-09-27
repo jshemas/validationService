@@ -69,8 +69,20 @@ exports.validateLastName = function(lastName, callback) {
  * @param function callback
  */
 exports.validateZipCode = function(zipCode, callback) {
-	//number characters between 0-8
+	//number characters between 0-9
 	//5 characters long
 	var regex = /(^\d{5}$)|(^\d{5}-\d{4}$)/;
 	return regex.test(zipCode);
+};
+
+/**
+ * validate US phone numbers
+ * @param string phone number - user input: phone number
+ * @param function callback
+ */
+exports.validatePhoneNumber = function(phoneNumber, callback) {
+	//number characters between 0-9
+	//between 7 and 10 characters long
+	var regex = /^(\+\d)*\s*(\(\d{3}\)\s*)*\d{3}(-{0,1}|\s{0,1})\d{2}(-{0,1}|\s{0,1})\d{2}$/;
+	return regex.test(phoneNumber);
 };

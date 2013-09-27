@@ -65,6 +65,15 @@ var zipcode1 = '12345',
 var zipcode4 = 'jhjkh',
 	zipcode5 = '111i11';
 
+// vaild phone numbers
+var phonenumber1 = '1234532',
+	phonenumber2 = '123-4545',
+	phonenumber3 = '(123)123-1234';
+
+// invaild phone numbers
+var phonenumber4 = '5676hihlu',
+	phonenumber5 = '123-123-12-34';
+
 describe('POST - validate/var:', function (done) {
 	it('good var', function(done) {
 		request(app)
@@ -245,15 +254,6 @@ describe('POST - validate/password:', function (done) {
 	});
 });
 
-
-
-
-
-
-
-
-
-
 describe('POST - validate/firstname:', function (done) {
 	it('good firstname - firstname1', function(done) {
 		request(app)
@@ -310,8 +310,6 @@ describe('POST - validate/firstname:', function (done) {
 			});
 	});
 });
-
-
 
 describe('POST - validate/lastname:', function (done) {
 	it('good lastname - firstname1', function(done) {
@@ -370,18 +368,6 @@ describe('POST - validate/lastname:', function (done) {
 	});
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
 describe('POST - validate/zipcode:', function (done) {
 	it('good zipcode - zipcode1', function(done) {
 		request(app)
@@ -431,6 +417,63 @@ describe('POST - validate/zipcode:', function (done) {
 	it('bad zipcode - used empty', function(done) {
 		request(app)
 			.post('/validate/zipcode?zipcode='+empty)
+			.end( function(err, result) {
+				expect(result.res.statusCode).to.be(200);
+				expect(result.res.body.success).to.be(false);
+				done();
+			});
+	});
+});
+
+describe('POST - validate/phonenumber:', function (done) {
+	it('good phonenumber - phonenumber1', function(done) {
+		request(app)
+			.post('/validate/phonenumber?phonenumber='+phonenumber1)
+			.end( function(err, result) {
+				expect(result.res.statusCode).to.be(200);
+				expect(result.res.body.success).to.be(true);
+				done();
+			});
+	});
+	it('good phonenumber - phonenumber2', function(done) {
+		request(app)
+			.post('/validate/phonenumber?phonenumber='+phonenumber2)
+			.end( function(err, result) {
+				expect(result.res.statusCode).to.be(200);
+				expect(result.res.body.success).to.be(true);
+				done();
+			});
+	});
+	it('good phonenumber - phonenumber3', function(done) {
+		request(app)
+			.post('/validate/phonenumber?phonenumber='+phonenumber3)
+			.end( function(err, result) {
+				expect(result.res.statusCode).to.be(200);
+				expect(result.res.body.success).to.be(true);
+				done();
+			});
+	});
+	it('bad phonenumber - phonenumber4', function(done) {
+		request(app)
+			.post('/validate/phonenumber?phonenumber='+phonenumber4)
+			.end( function(err, result) {
+				expect(result.res.statusCode).to.be(200);
+				expect(result.res.body.success).to.be(false);
+				done();
+			});
+	});
+	it('bad phonenumber - phonenumber5', function(done) {
+		request(app)
+			.post('/validate/phonenumber?phonenumber='+phonenumber5)
+			.end( function(err, result) {
+				expect(result.res.statusCode).to.be(200);
+				expect(result.res.body.success).to.be(false);
+				done();
+			});
+	});
+	it('bad phonenumber - used empty', function(done) {
+		request(app)
+			.post('/validate/phonenumber?phonenumber='+empty)
 			.end( function(err, result) {
 				expect(result.res.statusCode).to.be(200);
 				expect(result.res.body.success).to.be(false);
