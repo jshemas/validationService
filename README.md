@@ -26,19 +26,16 @@ http://localhost:8080/validate/password?password=mypassword
 ```
 
 ### Tests
-You have to have jasmine-node running. To install it run...
+You have to have mocha running. To install it run...
 ```
-npm install jasmine-node -g
+npm install -g mocha
 ```
-Then you can run the tests by turning on the server and run...
+Then you can run the tests by running...
 ```
-jasmine-node spec/
+mocha spec/
 ```
 
 ### TODO
--Code Clean Up
-
--Allow Cross Domain
 
 -Add More Validation Rules (Like email and website)
 
