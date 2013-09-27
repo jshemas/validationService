@@ -47,7 +47,7 @@ exports.validatePassword = function(password, callback) {
 exports.validateFirstName = function(firstName, callback) {
 	//word characters such as A-Z and a-z
 	//between 2 and 30 characters long
-	var regex = /[a-zA-Z]{2,30}/;
+	var regex = /^[a-zA-Z][a-zA-Z\-'\s]{2,30}$/;
 	return regex.test(firstName);
 };
 
@@ -59,7 +59,7 @@ exports.validateFirstName = function(firstName, callback) {
 exports.validateLastName = function(lastName, callback) {
 	//word characters such as A-Z and a-z
 	//between 2 and 30 characters long
-	var regex = /[a-zA-Z]{2,30}/;
+	var regex = /^[a-zA-Z][a-zA-Z\-'\s]{2,30}$/;
 	return regex.test(lastName);
 };
 

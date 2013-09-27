@@ -38,6 +38,24 @@ var password1 = 'password',
 var password4 = 'passwordpasswordpasswordpasswordpasswordpasswordpassword',
 	password5 = '<password>';
 
+// vaild first names
+var firstname1 = 'jim',
+	firstname2 = 'johnny',
+	firstname3 = 'asdklsjd';
+
+// invaild first name
+var firstname4 = 'asd8dasd',
+	firstname5 = '<%%%kjdksaj>';
+
+// vaild last names
+var lastname1 = 'jim',
+	lastname2 = 'johnny',
+	lastname3 = 'asdklsjd';
+
+// invaild last name
+var lastname4 = 'asd8dasd',
+	lastname5 = '<%%%kjdksaj>';
+
 // vaild zip codes
 var zipcode1 = '12345',
 	zipcode2 = '34643',
@@ -226,6 +244,143 @@ describe('POST - validate/password:', function (done) {
 			});
 	});
 });
+
+
+
+
+
+
+
+
+
+
+describe('POST - validate/firstname:', function (done) {
+	it('good firstname - firstname1', function(done) {
+		request(app)
+			.post('/validate/firstname?firstname='+firstname1)
+			.end( function(err, result) {
+				expect(result.res.statusCode).to.be(200);
+				expect(result.res.body.success).to.be(true);
+				done();
+			});
+	});
+	it('good firstname - firstname2', function(done) {
+		request(app)
+			.post('/validate/firstname?firstname='+firstname2)
+			.end( function(err, result) {
+				expect(result.res.statusCode).to.be(200);
+				expect(result.res.body.success).to.be(true);
+				done();
+			});
+	});
+	it('good firstname - firstname3', function(done) {
+		request(app)
+			.post('/validate/firstname?firstname='+firstname3)
+			.end( function(err, result) {
+				expect(result.res.statusCode).to.be(200);
+				expect(result.res.body.success).to.be(true);
+				done();
+			});
+	});
+	it('bad firstname - firstname4', function(done) {
+		request(app)
+			.post('/validate/firstname?firstname='+firstname4)
+			.end( function(err, result) {
+				expect(result.res.statusCode).to.be(200);
+				expect(result.res.body.success).to.be(false);
+				done();
+			});
+	});
+	it('bad firstname - firstname5', function(done) {
+		request(app)
+			.post('/validate/firstname?firstname='+firstname5)
+			.end( function(err, result) {
+				expect(result.res.statusCode).to.be(200);
+				expect(result.res.body.success).to.be(false);
+				done();
+			});
+	});
+	it('bad firstname - used empty', function(done) {
+		request(app)
+			.post('/validate/firstname?firstname='+empty)
+			.end( function(err, result) {
+				expect(result.res.statusCode).to.be(200);
+				expect(result.res.body.success).to.be(false);
+				done();
+			});
+	});
+});
+
+
+
+describe('POST - validate/lastname:', function (done) {
+	it('good lastname - firstname1', function(done) {
+		request(app)
+			.post('/validate/lastname?lastname='+lastname1)
+			.end( function(err, result) {
+				expect(result.res.statusCode).to.be(200);
+				expect(result.res.body.success).to.be(true);
+				done();
+			});
+	});
+	it('good lastname - lastname2', function(done) {
+		request(app)
+			.post('/validate/lastname?lastname='+lastname2)
+			.end( function(err, result) {
+				expect(result.res.statusCode).to.be(200);
+				expect(result.res.body.success).to.be(true);
+				done();
+			});
+	});
+	it('good lastname - lastname3', function(done) {
+		request(app)
+			.post('/validate/lastname?lastname='+lastname3)
+			.end( function(err, result) {
+				expect(result.res.statusCode).to.be(200);
+				expect(result.res.body.success).to.be(true);
+				done();
+			});
+	});
+	it('bad lastname - lastname4', function(done) {
+		request(app)
+			.post('/validate/lastname?lastname='+lastname4)
+			.end( function(err, result) {
+				expect(result.res.statusCode).to.be(200);
+				expect(result.res.body.success).to.be(false);
+				done();
+			});
+	});
+	it('bad lastname - lastname5', function(done) {
+		request(app)
+			.post('/validate/lastname?lastname='+lastname5)
+			.end( function(err, result) {
+				expect(result.res.statusCode).to.be(200);
+				expect(result.res.body.success).to.be(false);
+				done();
+			});
+	});
+	it('bad lastname - used empty', function(done) {
+		request(app)
+			.post('/validate/lastname?lastname='+empty)
+			.end( function(err, result) {
+				expect(result.res.statusCode).to.be(200);
+				expect(result.res.body.success).to.be(false);
+				done();
+			});
+	});
+});
+
+
+
+
+
+
+
+
+
+
+
+
 
 describe('POST - validate/zipcode:', function (done) {
 	it('good zipcode - zipcode1', function(done) {

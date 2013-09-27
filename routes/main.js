@@ -49,7 +49,7 @@ module.exports = function(app) {
 	 */
 	app.post('/validate/password', function(req, res){
 		var password = req.param('password');
-		if(validateUsername(password)){
+		if(validatePassword(password)){
 			res.json({
 				success: true,
 			});
@@ -67,7 +67,7 @@ module.exports = function(app) {
 	 */
 	app.post('/validate/firstname', function(req, res){
 		var firstname = req.param('firstname');
-		if(validateUsername(firstname)){
+		if(validateFirstName(firstname)){
 			res.json({
 				success: true,
 			});
@@ -85,7 +85,7 @@ module.exports = function(app) {
 	 */
 	app.post('/validate/lastname', function(req, res){
 		var lastname = req.param('lastname');
-		if(validateUsername(lastname)){
+		if(validateLastName(lastname)){
 			res.json({
 				success: true,
 			});
