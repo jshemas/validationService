@@ -28,7 +28,7 @@ If success is set to true, then the user's input was valid. Otherwise it will be
 Example:
 Trying to validate a username.
 
-Get Call
+Post Call
 ```
 http://localhost:8080/validate/username?username=myusername
 ```
