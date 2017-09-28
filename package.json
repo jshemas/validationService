@@ -1,14 +1,14 @@
 {
-	"name": "nodeValidation",
-	"description": "A nodeJS for Validation",
-	"version": "1.0.0",
-	"author": {
-		"name": "Josh Shemas"
-	},
-	"dependencies": {
-		"express": "3.2.6",
-		"ejs": "0.8.4",
-		"supertest": "0.7.0",
-		"expect.js": "0.2.0"
-	}
+  "name": "nodeValidation",
+  "description": "A nodeJS for Validation",
+  "version": "1.0.0",
+  "author": {
+    "name": "Josh Shemas"
+  },
+  "dependencies": {
+    "express": "4.16.0",
+    "ejs": "0.8.4",
+    "supertest": "2.0.0",
+    "expect.js": "0.2.0"
+  }
 }
