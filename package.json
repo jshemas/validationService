@@ -8,7 +8,7 @@
 	"dependencies": {
 		"express": "3.2.6",
 		"ejs": "0.8.4",
-		"supertest": "0.7.0",
+		"supertest": "3.0.0",
 		"expect.js": "0.2.0"
 	}
 }
