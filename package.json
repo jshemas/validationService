@@ -6,7 +6,7 @@
 		"name": "Josh Shemas"
 	},
 	"dependencies": {
-		"express": "3.2.6",
+		"express": "3.11.0",
 		"ejs": "0.8.4",
 		"supertest": "0.7.0",
 		"expect.js": "0.2.0"
